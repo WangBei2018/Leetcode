@@ -1,4 +1,4 @@
-package Offer59_maxSlidingWindow;
+package Offer59_II_maxSlidingWindow;
 
 import java.util.*;
 

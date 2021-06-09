@@ -1,5 +1,8 @@
 package offer06_reversePrint;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Author WangBei
  * @Date 2021/6/9 11:15
@@ -12,11 +15,23 @@ package offer06_reversePrint;
 限制：
     0 <= 链表长度 <= 10000
 */
+// 递归解法
 public class Solution_recursive {
+    List<Integer> list = new ArrayList<>();
+
     public int[] reversePrint(ListNode head) {
-        int[] res =new int[0];
+        recur(head);
 
+        int[] res = new int[list.size()];
+        for (int i = 0; i < res.length; i++) {
+            res[i] = list.get(i);
+        }
         return res;
+    }
 
+    public void recur(ListNode node) {
+        if (node == null) return;
+        recur(node.next);
+        list.add(node.val);
     }
 }

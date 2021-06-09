@@ -1,5 +1,9 @@
 package offer06_reversePrint;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * @Author WangBei
  * @Date 2021/6/9 11:13
@@ -13,11 +17,22 @@ package offer06_reversePrint;
 限制：
     0 <= 链表长度 <= 10000
 */
+
+// 辅助栈求解
 public class Solution_stack {
     public int[] reversePrint(ListNode head) {
-        int[] res =new int[0];
+        LinkedList<Integer> list = new LinkedList<>();
+        while (head != null) {
+            list.offerLast(head.val);
+            head = head.next;
+        }
+        int[] res = new int[list.size()];
+        int i = 0;
+        while (!list.isEmpty()) {
+            res[i] = list.pollLast();
+            i++;
+        }
 
         return res;
-
     }
 }

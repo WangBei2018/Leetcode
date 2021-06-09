@@ -1,4 +1,4 @@
-package offer59_MaxQueue;
+package offer59_I_MaxQueue;
 
 import java.util.Deque;
 import java.util.LinkedList;

@@ -18,17 +18,24 @@ public class test {
             nextnode = nextnode.next;
         }
 
-        ListNode ln = head.next;
-        while (ln.next != null) {
-            System.out.println(ln.val);
-            ln = ln.next;
+//        ListNode ln = head.next;
+//        while (ln != null) {
+//            System.out.println(ln.val);
+//            ln = ln.next;
+//        }
+
+
+        Solution_stack ss = new Solution_stack();
+        int[] res_stack = ss.reversePrint(head.next);
+        for (int i : res_stack) {
+            System.out.println(i);
         }
 
-
-//        Solution_stack ss = new Solution_stack();
-//        ss.reversePrint(head);
-//
-//        Solution_recursive sr = new Solution_recursive();
-//        sr.reversePrint(head);
+        System.out.println("----------------------------");
+        Solution_recursive sr = new Solution_recursive();
+        int[] res_recursive = sr.reversePrint(head.next);
+        for (int i : res_recursive) {
+            System.out.println(i);
+        }
     }
 }

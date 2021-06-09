@@ -1,4 +1,4 @@
-package Offer59_maxSlidingWindow;
+package Offer59_II_maxSlidingWindow;
 
 public class test {
     public static void main(String[] args) {
