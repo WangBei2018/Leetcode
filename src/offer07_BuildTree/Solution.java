@@ -1,4 +1,4 @@
-package offer7_BuildTree;
+package offer07_BuildTree;
 
 import java.util.HashMap;
 
