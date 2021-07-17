@@ -1,4 +1,4 @@
-package largestIsland_827;
+package Leetcode827_LargestIsland_827;
 
 public class test {
     public static void main(String[] args) {

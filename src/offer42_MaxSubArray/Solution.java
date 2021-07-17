@@ -38,14 +38,14 @@ public class Solution {
         if (nums == null || nums.length == 0) return 0;
         int maxSum = nums[0];
 
-//        // 方式一：
+//        // 方式一：直接在原始数组上进行修改当前最大值
 //        for (int i = 1; i < nums.length; i++) {
 //            nums[i] = Math.max(nums[i - 1] + nums[i], nums[i]);
 //            maxSum = Math.max(maxSum, nums[i]);
 //        }
 //        return maxSum;
 
-        // 方式二：
+        // 方式二：使用两个额外的变量，记录最大值，以及当前那计算结果
         int dp_i_1 = nums[0];
         int dp_i = nums[0];
         for (int i = 1; i < nums.length; i++) {
@@ -56,3 +56,9 @@ public class Solution {
         return maxSum;
     }
 }
+/**
+ * 思路：
+ * 1. 直接在原数组上进行修改，当前最大子数组之和 maxSum 初始化为 nums[0]
+ * 2. nums[i]存放，到第 i 个数字为止，当前最大的数组之和，即如果前i-1个数组之和的最大值大于0，则当前位置的数加上之前的最大和为最新的最大值，否则，不加之前的最大和
+ * 3. 最后nums数组中的最大值便是整个数组中最大的子序列之和。
+ */

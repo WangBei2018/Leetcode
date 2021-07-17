@@ -1,4 +1,4 @@
-package findDuplicate_287;
+package Leetcode287_FindDuplicate;
 
 public class test {
     public static void main(String[] args) {

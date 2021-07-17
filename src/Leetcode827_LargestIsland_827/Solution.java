@@ -1,4 +1,4 @@
-package largestIsland_827;
+package Leetcode827_LargestIsland_827;
 
 import java.util.ArrayList;
 import java.util.Collections;

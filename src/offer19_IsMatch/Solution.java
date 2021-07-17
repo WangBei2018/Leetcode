@@ -43,6 +43,65 @@ package offer19_IsMatch;
  * s 可能为空，且只包含从 a-z 的小写字母。
  * p 可能为空，且只包含从 a-z 的小写字母以及字符 . 和 * ，无连续的 '*'。
  */
+
+
+public class Solution {
+    public boolean isMatch(String s, String p) {
+        boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
+
+        dp[0][0] = true;
+        for (int i = 2; i < p.length() + 1; i += 2) {
+            if (p.charAt(i - 1) == '*') {
+                dp[0][i] = dp[0][i - 2];
+            }
+        }
+
+        for (int i = 1; i < s.length() + 1; i++) {
+            for (int j = 1; j < p.length() + 1; j++) {
+                if (p.charAt(j - 1) == '*') {           // 当 p[j-1] = '*' 时，(此时需要考虑 p[j-2]出现 0 次和多次的情况)
+                    if (dp[i][j - 2]) {                 // 出现 0 次，只需判断 dp[i][j-2] 的值，此时 dp[i][j] = dp[i][j-2]
+                        dp[i][j] = true;
+                    }
+                    // 出现多次，判断多次是出现的 p 的字符和 s 的字符是否相等 (这里需要好好理解)
+                    else if (dp[i - 1][j] && s.charAt(i - 1) == p.charAt(j - 2)) {
+                        // 这里为什么是dp[i-1][j],好好想想吧
+                        dp[i][j] = true;
+                    } else if (dp[i - 1][j] && p.charAt(j - 2) == '.') {
+                        dp[i][j] = true;
+                    }
+                } else {                            // 当 p[j-1] != '*' 时，只需判断当前位是否匹配(字符相等或者为'.')
+                    if (dp[i - 1][j - 1] && s.charAt(i - 1) == p.charAt(j - 1)) {
+                        dp[i][j] = true;
+                    } else if (dp[i - 1][j - 1] && p.charAt(j - 1) == '.') {
+                        dp[i][j] = true;
+                    }
+                }
+            }
+        }
+
+        return dp[s.length()][p.length()];
+    }
+}
+
+
+/**
+ * 思路：动态规划
+ * 1、状态定义：dp[i][j]： s 的前 i 个字符与 p 的前 j 个字符是否匹配。
+ * 2、转移方程：dp[i][j]表示添加的字符是 s[i-1] 和 p[j-1]
+ * ··以下情况 dp[i][j]=true ,其余情况 = false
+ * ···(1) 当 p[j-1] = '*' 时，(此时需要考虑 p[j-2]出现 0 次和多次的情况)
+ * ······a. 出现 0 次，只需判断 dp[i][j-2] 的值，此时 dp[i][j] = dp[i][j-2]
+ * ······b. 出现多次，判断多次是出现的 p 的字符和 s 的字符是否相等 (这里需要好好理解)
+ * ········b.1. dp[i-1][j]==true && s[i-1]==p[i-2] 时, dp[i][j]=true
+ * ········b.2. dp[i-1][j]==true && p[i-2]=='.' 时, dp[i][j]=true
+ * ···(2) 当 p[j-1] != '*' 时，只需判断当前位是否匹配
+ * ······a. dp[i-1][j-1]==true && s[i-1]==p[i-1]
+ * ······b. dp[i-1][j-1]==true && p[i-1]=='.'
+ */
+
+
+/*
+// 有问题的代码，其中考虑到了部分，无法判断例如 a*a 与 aa 的情况
 public class Solution {
     public boolean isMatch(String s, String p) {
         if (s != null && s.length() != 0) {
@@ -81,9 +140,7 @@ public class Solution {
         return false;
     }
 }
-/**
- * 思路:
- */
+*/
 
 
 
