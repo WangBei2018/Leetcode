@@ -6,7 +6,7 @@ import java.util.Queue;
 /**
  * @Author WangBei
  * @Date 2021/6/16 10:19
- * @Description:两个队列实现栈
+ * @Description: 两个队列实现栈
  */
 public class CStack {
     Queue<Integer> A, B;
@@ -21,8 +21,7 @@ public class CStack {
             A.offer(value);
             return;
         }
-        if (!A.isEmpty())
-        {
+        if (!B.isEmpty()) {
             B.offer(value);
             return;
         }
@@ -30,14 +29,14 @@ public class CStack {
     }
 
     public int deleteHead() {
-        if(!A.isEmpty()){
+        if (!A.isEmpty()) {
             int num = A.poll();
-            if(A.isEmpty()) return num;
+            if (A.isEmpty()) return num;
             B.offer(num);
         }
-        if(!B.isEmpty()){
+        if (!B.isEmpty()) {
             int num = B.poll();
-            if(B.isEmpty()) return num;
+            if (B.isEmpty()) return num;
             A.offer(num);
         }
         return -1;

@@ -5,7 +5,7 @@ import java.util.Stack;
 /**
  * @Author WangBei
  * @Date 2021/6/16 10:05
- * @Description:两个栈实现队列
+ * @Description: 两个栈实现队列
  */
 
 public class CQueue {

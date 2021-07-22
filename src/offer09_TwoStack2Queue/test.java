@@ -9,7 +9,10 @@ public class test {
         CQueue cq = new CQueue();
 
         cq.appendTail(3);
+        cq.appendTail(2);
         System.out.println(cq.deleteHead());
+
+        cq.appendTail(1);
         System.out.println(cq.deleteHead());
     }
 }
