@@ -1,5 +1,7 @@
 package offer07_BuildTree;
 
+import GetNext_20210611.Tree;
+
 import java.util.HashMap;
 
 /**
@@ -32,32 +34,59 @@ import java.util.HashMap;
 */
 
 
-public class Solution {
+//public class Solution {
+//    HashMap<Integer, Integer> hm;
+//    int[] preorder;
+//
+//    public TreeNode buildTree(int[] preorder, int[] inorder) {
+//
+//        hm=new HashMap<>();
+//        for (int i = 0; i < inorder.length; i++) {
+//            hm.put(inorder[i], i);
+//        }
+//
+//        this.preorder = preorder;       // 首先需要初始化类中的变量，在递归函数中使用是才能找到值
+//
+//        TreeNode root = recur(0, 0, inorder.length-1);
+//        return root;
+//    }
+//
+//    public TreeNode recur(int root, int left, int right) {
+//        if (left > right) return null;
+//
+//        TreeNode node = new TreeNode(preorder[root]);
+//        int index = hm.get(preorder[root]);                 // 这里需要找到根节点在中序遍历中的位置，划分左右子树
+//
+//        node.left = recur(root + 1, left, index - 1);
+//        node.right = recur(root + index - 1 - left + 2, index + 1, right);
+//
+//        return node;
+//    }
+//}
+
+
+class Solution {
     HashMap<Integer, Integer> hm;
     int[] preorder;
 
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-
-        hm=new HashMap<>();
+        this.preorder = preorder;
+        TreeNode root = new TreeNode(0);
+        hm = new HashMap<>();
         for (int i = 0; i < inorder.length; i++) {
             hm.put(inorder[i], i);
         }
-
-        this.preorder = preorder;       // 首先需要初始化类中的变量，在递归函数中使用是才能找到值
-
-        TreeNode root = recur(0, 0, inorder.length-1);
+        root = rebuildTree(0, 0, preorder.length - 1);
         return root;
     }
 
-    public TreeNode recur(int root, int left, int right) {
-        if (left > right) return null;
+    public TreeNode rebuildTree(int root, int start, int end) {
+        if (start > end) return null;
 
         TreeNode node = new TreeNode(preorder[root]);
-        int index = hm.get(preorder[root]);                 // 这里需要找到根节点在中序遍历中的位置，划分左右子树
-
-        node.left = recur(root + 1, left, index - 1);
-        node.right = recur(root + index - 1 - left + 2, index + 1, right);
-
+        int index = hm.get(preorder[root]);
+        node.left = rebuildTree(root + 1, start, index - 1);
+        node.right = rebuildTree(root + index - start + 1, index + 1, end);
         return node;
     }
 }

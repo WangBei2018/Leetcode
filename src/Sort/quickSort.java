@@ -48,12 +48,6 @@ public class quickSort {
 //        return start;
 //    }
 
-    int[] seq;
-
-    quickSort(int[] seq) {
-        this.seq = seq;
-    }
-
     public void QuickSort(int[] seq, int start, int end) {
         if (start == end) return;
         int index = Partition(seq, start, end);

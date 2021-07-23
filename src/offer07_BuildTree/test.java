@@ -1,5 +1,7 @@
 package offer07_BuildTree;
 
+import GetNext_20210611.Tree;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,22 +22,35 @@ public class test {
         WFS(tn);
     }
 
+    //    public static void WFS(TreeNode tn) {
+//        Queue<TreeNode> queue = new LinkedList<>();
+//        queue.offer(tn);
+//
+//        List<Integer> list = new ArrayList<>();
+//        while (!queue.isEmpty()) {
+//            for (int i = 0; i < queue.size(); i++) {
+//                TreeNode node = queue.poll();
+//                list.add(node.val);
+//                if (node.left != null) queue.offer(node.left);
+//                if (node.right != null) queue.offer(node.right);
+//            }
+//        }
+//        for (int i : list) {
+//            System.out.print(i + " ");
+//        }
+//    }
+
     public static void WFS(TreeNode tn) {
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(tn);
-
-        List<Integer> list = new ArrayList<>();
         while (!queue.isEmpty()) {
-            for (int i = 0; i < queue.size(); i++) {
+            int len = queue.size();
+            for (int i = 0; i < len; i++) {
                 TreeNode node = queue.poll();
-                list.add(node.val);
+                if (queue.isEmpty()) System.out.println(node.val);
                 if (node.left != null) queue.offer(node.left);
                 if (node.right != null) queue.offer(node.right);
             }
         }
-        for (int i : list) {
-            System.out.print(i + " ");
-        }
-
     }
 }

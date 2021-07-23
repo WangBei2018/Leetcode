@@ -10,7 +10,7 @@ public class test {
 
         // 快速排序
         int[] seq = {48, 62, 35, 77, 55, 14, 35, 98};
-        quickSort sort = new quickSort(seq);
+        quickSort sort = new quickSort();
         sort.QuickSort(seq, 0, seq.length - 1);
         for (int num : seq) {
             System.out.print(num + " ");

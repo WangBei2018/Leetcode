@@ -8,8 +8,8 @@ package Interview17_14_SmallestK;
 public class test {
     public static void main(String[] args) {
         Solution s = new Solution();
-        int[] arr = {};
-        int k = 4;
+        int[] arr = {3,2,1};
+        int k = 2;
         int[] kList = s.smallestK(arr, k);
         for (int num : kList) {
             System.out.print(num + " ");
