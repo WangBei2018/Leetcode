@@ -13,8 +13,9 @@ public class test {
         Solution s = new Solution();
         int[] rootarr = {6, 2, 8, 0, 4, 7, 9, -1, -1, 3, 5};
         TreeNode root = new TreeNode(rootarr[0]);
-
-        s.lowestCommonAncestor(root, p, q);
+        createTree(root);
+        TreeNode parent = s.lowestCommonAncestor(root, p, q);
+        System.out.println(parent.val);
     }
 
     public static void createTree(TreeNode root) {
@@ -29,10 +30,10 @@ public class test {
         TreeNode node9 = new TreeNode(5);
 
         p = node2;
-        q = node3;
+        q = node5;
 
         root.left = node2;
-        root.right = node3;
+        root.right = node9;
 
         node2.left = node4;
         node2.right = node5;

@@ -1,25 +1,128 @@
 package offer68_LowestCommonAncestor;
 
+import java.util.IllegalFormatCodePointException;
+
 /**
  * @Author WangBei
  * @Date 2021/7/24 10:22
- * @Description:
+ * @Description: 剑指 Offer 68 - I. 二叉搜索树的最近公共祖先 ---- NC102
+ * 给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。
+ * <p>
+ * 百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”
+ * <p>
+ * 例如，给定如下二叉搜索树:  root = [6,2,8,0,4,7,9,null,null,3,5]
+ * <p>
+ * <p>
+ * <p>
+ *  
+ * <p>
+ * 示例 1:
+ * <p>
+ * 输入: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
+ * 输出: 6
+ * 解释: 节点 2 和节点 8 的最近公共祖先是 6。
+ * 示例 2:
+ * <p>
+ * 输入: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
+ * 输出: 2
+ * 解释: 节点 2 和节点 4 的最近公共祖先是 2, 因为根据定义最近公共祖先节点可以为节点本身。
+ *  
+ * <p>
+ * 说明:
+ * <p>
+ * 所有节点的值都是唯一的。
+ * p、q 为不同节点且均存在于给定的二叉搜索树中。
  */
+
 public class Solution {
-    TreeNode p, q;
-
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        this.p = p;
-        this.q = q;
-        TreeNode parent = new TreeNode(0);
 
+        if (p.val > q.val) {
+            TreeNode temp = p;
+            p = q;
+            q = temp;
+        }
 
-        return parent;
-    }
-
-    public void DFS(TreeNode root) {
-
-
-
+        while (root != null) {
+            if (root.val < p.val) root = root.right;
+            if (root.val > q.val) root = root.left;
+            else break;
+        }
+        return root;
     }
 }
+
+/**
+ * 思路：因为本题给的是二叉排序树，所以节点间会有大小关系
+ * 1. 首先给 p, q 两个节点排序，排序后 p < q ；
+ * 2. 从根节点开始，
+ * ···2.1. 如果说根节点的值小于两个节点中较小的值，则证明两个节点在当前根节点的右侧，所以查看右子树: root = root.right；
+ * ···2.2. 如果说根节点的值大于两个节点中较大的值，则证明两个节点在当前根节点的左侧，所以查看左子树: root = root.left；
+ * ···2.3. 否则，证明查找的两个节点在根节点的左右两侧，或者其中一个节点为根节点。
+ * 3.返回当前root节点。
+ * 思路：深度遍历，查找到当前待查找的节点，逐层返回；
+ * 会出两种情况：
+ * （1）待查找节点在公共父节点两侧
+ * （2）待查找的两个节点是父子关系，即其中一个是两节点的公共父节点
+ * 思路：深度遍历，查找到当前待查找的节点，逐层返回；
+ * 会出两种情况：
+ * （1）待查找节点在公共父节点两侧
+ * （2）待查找的两个节点是父子关系，即其中一个是两节点的公共父节点
+ * 思路：深度遍历，查找到当前待查找的节点，逐层返回；
+ * 会出两种情况：
+ * （1）待查找节点在公共父节点两侧
+ * （2）待查找的两个节点是父子关系，即其中一个是两节点的公共父节点
+ * 思路：深度遍历，查找到当前待查找的节点，逐层返回；
+ * 会出两种情况：
+ * （1）待查找节点在公共父节点两侧
+ * （2）待查找的两个节点是父子关系，即其中一个是两节点的公共父节点
+ * 思路：深度遍历，查找到当前待查找的节点，逐层返回；
+ * 会出两种情况：
+ * （1）待查找节点在公共父节点两侧
+ * （2）待查找的两个节点是父子关系，即其中一个是两节点的公共父节点
+ * 思路：深度遍历，查找到当前待查找的节点，逐层返回；
+ * 会出两种情况：
+ * （1）待查找节点在公共父节点两侧
+ * （2）待查找的两个节点是父子关系，即其中一个是两节点的公共父节点
+ * 思路：深度遍历，查找到当前待查找的节点，逐层返回；
+ * 会出两种情况：
+ * （1）待查找节点在公共父节点两侧
+ * （2）待查找的两个节点是父子关系，即其中一个是两节点的公共父节点
+ * 思路：深度遍历，查找到当前待查找的节点，逐层返回；
+ * 会出两种情况：
+ * （1）待查找节点在公共父节点两侧
+ * （2）待查找的两个节点是父子关系，即其中一个是两节点的公共父节点
+ * 思路：深度遍历，查找到当前待查找的节点，逐层返回；
+ * 会出两种情况：
+ * （1）待查找节点在公共父节点两侧，此时最终返回的就是公共父节点
+ * （2）待查找的两个节点是父子关系，即其中一个是两节点的公共父节点，此时最终返回的就是两者中的父节点
+ */
+
+
+// 方法二：递归遍历，这种方法既可以用在二叉排序树，也可以用在普通的不含重复节点的二叉树（参照NC102，这个是NC102的思路，面向的是非二叉排序树，更一般的情况）
+//public class Solution {
+//
+//    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+//        if (root == null) return null;
+//        TreeNode parent = DFS(root, p, q);
+//        return parent;
+//    }
+//
+//    public TreeNode DFS(TreeNode root, TreeNode p, TreeNode q) {
+//        if (root == null) return null;
+//        if (root == p) return p;
+//        if (root == q) return q;
+//
+//        TreeNode left = DFS(root.left, p, q);
+//        TreeNode right = DFS(root.right, p, q);
+//
+//        if (left == null) return right;
+//        if (right == null) return left;
+//        return root;
+//    }
+//}
+/** 思路：深度遍历，查找到当前待查找的节点，逐层返回；
+ * 会出两种情况：
+ * （1）待查找节点在公共父节点两侧，此时最终返回的就是公共父节点
+ * （2）待查找的两个节点是父子关系，即其中一个是两节点的公共父节点，此时最终返回的就是两者中的父节点
+ * */
