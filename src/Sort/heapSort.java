@@ -18,7 +18,6 @@ public class heapSort {
         for (int i = 0; i >= 0; i--) {
             swap(arr, 0, arr.length - 1 - i);
             adjust(arr, 0, arr.length - 1 - i);
-
         }
     }
 
