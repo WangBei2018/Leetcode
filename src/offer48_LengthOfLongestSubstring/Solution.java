@@ -37,7 +37,6 @@ public class Solution {
             } else {
                 len = i - index;
             }
-            maxLen = Math.max(maxLen, len);
 
             maxLen = Math.max(maxLen, len);
         }
